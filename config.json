@@ -6,7 +6,7 @@
 "settings": {
 "clients": [
 {
-"id": "d2cb8181-233c-4dbb-9972-8a1d69ddd044",
+"id": "d5cb8-233c-4dbb-9972-81d9d4",
 "level": 0
 }
 ],
@@ -15,7 +15,7 @@
 "streamSettings": {
 "network": "ws",
 "wsSettings": {
-"path": "/stophvps"
+"path": "/stophmods"
 }
 }
 }
