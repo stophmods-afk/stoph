@@ -1,4 +1,4 @@
-ho{
+{
 "inbounds": [
 {
 "port": 8080,
@@ -20,14 +20,6 @@ ho{
 }
 }
 ],
-  
-"outbounds": [
-{
-"protocol": "freedom",
-"settings": {}
-}
-]
-}
 "udp_ports": [
       10096,
       10100,
@@ -39,3 +31,11 @@ ho{
       7400,
       7500
     ],
+"outbounds": [
+{
+"protocol": "freedom",
+"settings": {}
+}
+]
+}
+
