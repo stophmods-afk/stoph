@@ -1,7 +1,7 @@
 {
   "inbounds": [
     {
-      "port": 8080, // Local listening port for SOCKS5 proxy
+      "port": 10808, // Local listening port for SOCKS5 proxy
       "listen": "127.0.0.1",
       "protocol": "socks",
       "settings": {
