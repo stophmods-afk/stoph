@@ -1,29 +1,55 @@
 {
-"inbounds": [
-{
-"port": 8080,
-"protocol": "vless",
-"settings": {
-"clients": [
-{
-"id": "d2cb8181-233c-4dbb-9972-8a1d69ddd044",
-"level": 0
-}
-],
-"decryption": "none"
-},
-"streamSettings": {
-"network": "ws",
-"wsSettings": {
-"path": "/@StoPhMods"
-}
-}
-}
-],
-"outbounds": [
-{
-"protocol": "freedom",
-"settings": {}
-}
-]
+  "inbounds": [
+    {
+      "port": 8080, // Local listening port for SOCKS5 proxy
+      "listen": "127.0.0.1",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "googlevideo.com", // Remote server address
+            "port": 443, // Remote server port (commonly 443 for TLS)
+            "users": [
+              {
+                "id": "d2cb8181-233c-4dbb-9972-8a1d69ddd044", // Your UUID/User ID
+                "level": 0,
+                "alterId": 0 // Often 0 for modern configs
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws", // WebSocket
+        "security": "tls", // Transport Layer Security
+        "wsSettings": {
+          "path": "/@StoPhMods" // Match server's path
+        }
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom", // Default outbound for direct connection (if routing allows)
+      "tag": "direct"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "direct"
+      }
+    ]
+  }
 }
